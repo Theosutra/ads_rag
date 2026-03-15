@@ -1,0 +1,10 @@
+# SHA256 checksums des datasets
+# Générer avec : sha256sum data/raw/<fichier>
+# Vérifier avec : sha256sum --check checksums.txt
+
+# À remplir après téléchargement des données :
+# <hash>  data/raw/fquad2_train.json
+# <hash>  data/raw/fquad2_dev.json
+# <hash>  data/raw/piaf_v1.1.json
+# <hash>  data/raw/kilt_nq_train.jsonl
+# <hash>  data/raw/kilt_nq_dev.jsonl

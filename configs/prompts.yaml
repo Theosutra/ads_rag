@@ -1,0 +1,29 @@
+prompts:
+  standard:
+    name: "standard"
+    description: "Concaténation brute des passages"
+    template: |
+      Utilise les passages suivants pour répondre à la question.
+      Si la réponse ne figure pas dans les passages, réponds 'Je ne sais pas'.
+
+      Passages :
+      {passages}
+
+      Question : {question}
+      Réponse :
+
+  citations:
+    name: "citations"
+    description: "Citations numérotées avec instruction d'attribution"
+    template: |
+      Réponds à la question en te basant UNIQUEMENT sur les passages numérotés ci-dessous.
+      Pour chaque affirmation, indique le numéro du passage source entre crochets [N].
+      Si aucun passage ne permet de répondre, réponds exactement 'Je ne sais pas.'
+
+      {numbered_passages}
+
+      Question : {question}
+      Réponse (avec citations) :
+
+  abstention_instruction: "Si aucun passage ne permet de répondre, réponds exactement 'Je ne sais pas.'"
+  unanswerable_marker: "Je ne sais pas"

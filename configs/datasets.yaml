@@ -1,0 +1,52 @@
+datasets:
+  fquad2:
+    name: "FQuAD 2.0"
+    lang: "fr"
+    hf_id: "illuin-technology/fquad2"
+    splits: ["train", "validation"]
+    type: "qa_unanswerable"
+    protocols: ["A", "B", "C"]
+
+  piaf:
+    name: "PIAF v1.1"
+    lang: "fr"
+    hf_id: "illuin-technology/piaf"
+    splits: ["train"]
+    type: "qa"
+    protocols: ["A"]
+
+  kilt_nq:
+    name: "KILT Natural Questions"
+    lang: "en"
+    hf_id: "kilt_tasks"
+    hf_subset: "nq"
+    splits: ["train", "validation"]
+    type: "qa_open_domain"
+    protocols: ["A", "B"]
+
+  kilt_wikipedia:
+    name: "KILT Wikipedia"
+    lang: "fr+en"
+    source: "https://github.com/facebookresearch/KILT"
+    type: "corpus"
+    protocols: ["A", "B", "C"]
+
+  ragtruth:
+    name: "RAGTruth"
+    lang: "en"
+    source: "https://aclanthology.org/2024.acl-long.585/"
+    type: "hallucination_corpus"
+    protocols: ["C"]
+
+  ragbench:
+    name: "RAGBench"
+    lang: "en"
+    source: "https://arxiv.org/abs/2407.11005"
+    type: "rag_eval_industrial"
+    protocols: ["C"]
+
+checksums_file: "checksums.txt"
+data_dir: "data/"
+raw_dir: "data/raw/"
+processed_dir: "data/processed/"
+splits_dir: "data/splits/"

@@ -1,0 +1,77 @@
+bm25:
+  k1: 1.0
+  b: 0.6
+  index_dir: "indexes/bm25/"
+  threads: 8
+
+dense:
+  model_fr: "intfloat/multilingual-e5-large"
+  model_en: "facebook/dpr-ctx_encoder-single-nq-base"
+  query_encoder_en: "facebook/dpr-question_encoder-single-nq-base"
+  faiss_index_type: "IndexIVFFlat"
+  faiss_nlist: 4096
+  batch_size: 64
+  index_dir: "indexes/dense/"
+
+hybrid:
+  alpha: 0.5
+  index_dir: "indexes/hybrid/"
+
+chunking:
+  chunk_size: 256
+  overlap: 50
+  tested_sizes: [128, 200, 256, 300, 400]
+  tested_overlaps: [0, 32, 50, 64]
+
+retrieval:
+  k_values: [5, 10, 20]
+  rerank_initial_k: 50
+  configs:
+    - name: "baseline"
+      retriever: null
+      k: 0
+    - name: "bm25_k5"
+      retriever: "bm25"
+      k: 5
+    - name: "bm25_k10"
+      retriever: "bm25"
+      k: 10
+    - name: "bm25_k20"
+      retriever: "bm25"
+      k: 20
+    - name: "dense_k5"
+      retriever: "dense"
+      k: 5
+    - name: "dense_k10"
+      retriever: "dense"
+      k: 10
+    - name: "dense_k20"
+      retriever: "dense"
+      k: 20
+    - name: "hybrid_k5"
+      retriever: "hybrid"
+      k: 5
+    - name: "hybrid_k10"
+      retriever: "hybrid"
+      k: 10
+    - name: "hybrid_k20"
+      retriever: "hybrid"
+      k: 20
+    - name: "bm25_rerank"
+      retriever: "bm25"
+      k: 10
+      reranking: true
+      initial_k: 50
+    - name: "dense_rerank"
+      retriever: "dense"
+      k: 10
+      reranking: true
+      initial_k: 50
+
+rerankers:
+  colbert:
+    model: "colbert-ir/colbertv2.0"
+    type: "late_interaction"
+  cross_encoder:
+    model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    type: "cross_encoder"

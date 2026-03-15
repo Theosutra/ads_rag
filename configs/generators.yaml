@@ -1,0 +1,27 @@
+generator:
+  model_name: "google/mt5-large"
+  device: "cuda"
+  dtype: "float16"
+
+  generation_params:
+    max_new_tokens: 128
+    num_beams: 4
+    early_stopping: true
+    no_repeat_ngram_size: 3
+
+  tested_params:
+    max_new_tokens: [64, 128, 256]
+    num_beams: [1, 4]
+
+  batch_size: 8
+
+ragas_judge:
+  model: "meta-llama/Meta-Llama-3-8B-Instruct"
+  temperature: 0.0
+  max_tokens: 512
+  note: "Utiliser llama-3-8b pour reproductibilité. Ne pas utiliser gpt-3.5-turbo en production expérimentale."
+
+seeds:
+  random: 42
+  numpy: 42
+  torch: 42
